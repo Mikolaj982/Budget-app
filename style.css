@@ -1,0 +1,221 @@
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #ddd;
+  font-family: "Roboto", sans-serif;
+}
+
+h2 {
+  font-size: 18px;
+  font-weight: 550;
+  text-transform: capitalize;
+  text-decoration: underline;
+  margin-bottom: 9px;
+}
+
+button {
+  background-image: linear-gradient(
+    90deg,
+    #455eb5 10%,
+    #5643cc 40%,
+    #673fd7 60%
+  );
+  border-radius: 8px;
+  border-style: none;
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  height: 30px;
+  padding: 0 10px;
+  align-self: center;
+  margin-left: 20px;
+}
+
+.validation {
+  color: red;
+  font-size: 14px;
+  width: 50vw;
+}
+
+.container {
+  height: 100vh;
+  margin: 10px;
+  /* overflow: hidden; */
+}
+
+.top {
+  display: flex;
+}
+
+.top h1 {
+  font-size: 35px;
+  align-self: center;
+  font-weight: bold;
+}
+
+.logo {
+  height: 60px;
+  margin-left: 19px;
+}
+
+.budget-amount {
+  font-size: 20px;
+  margin: 15px auto;
+  text-align: center;
+  padding: 5px 0;
+  border-bottom: solid 3px rgb(91, 54, 170);
+}
+
+#incomes-list {
+  border-bottom: solid 1px rgb(91, 54, 170);
+  margin: 20px 0;
+  font-weight: 500;
+}
+
+#incomes-list div {
+  margin-bottom: 10px;
+  display: flex;
+}
+
+#incomes-list span:nth-child(2) {
+  margin-right: 5px;
+}
+
+#incomes-list #price {
+  margin-left: 6px;
+}
+
+#incomes-list div i:nth-child(1) {
+  margin-right: 10px;
+  color: rgb(8, 129, 8);
+}
+
+#expenses {
+  margin-top: 25px;
+}
+
+#expenses-list {
+  border-bottom: solid 1px rgb(91, 54, 170);
+  margin: 20px 0;
+}
+
+#expenses-list div {
+  margin-bottom: 10px;
+  display: flex;
+}
+
+#expenses-list span:nth-child(2) {
+  margin-right: 5px;
+}
+
+#expenses-list #price1 {
+  margin-left: 6px;
+}
+
+#expenses-list div i:nth-child(1) {
+  margin-right: 10px;
+  color: rgb(202, 24, 15);
+}
+
+i:nth-child(4) {
+  text-align: right;
+  flex: 100%;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+i:nth-child(5) {
+  color: rgb(202, 24, 15);
+  margin-right: 15px;
+  cursor: pointer;
+}
+
+.form-button {
+  display: flex;
+  flex-direction: row;
+  height: 50px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.form input {
+  width: 50vw;
+}
+
+.form div {
+  width: 50vw;
+  color: red;
+  font-size: 15px;
+}
+
+.total {
+  display: flex;
+  border-bottom: solid 2px rgb(91, 54, 170);
+  padding: 10px 0 5px;
+}
+
+#total-income,
+#total-expense {
+  margin-left: 8px;
+  font-weight: 550;
+}
+
+@media screen and (min-width: 768px) {
+  html,
+  body {
+    overflow: hidden;
+  }
+  .top h1 {
+    font-size: 50px;
+    margin: 15px;
+  }
+
+  .logo {
+    align-self: center;
+    height: 75px;
+  }
+
+  .budget-amount {
+    font-size: 30px;
+    margin-top: 25px;
+  }
+
+  h2 {
+    font-size: 29px;
+  }
+
+  .container2 {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  #incomes {
+    width: 40vw;
+  }
+
+  #expenses {
+    margin: 0 0 0 70px;
+    width: 45vw;
+  }
+
+  .form-button {
+    height: 60px;
+  }
+
+  .form input {
+    width: 30vw;
+    height: 20px;
+  }
+
+  button {
+    font-size: 20px;
+    padding: 0px 12px;
+  }
+}

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Projekt domowy budżet</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/79bc482e28.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="reset.css" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="top">
+        <h1>Budget app</h1>
+        <img src="img/coins.png" alt="logo" class="logo" />
+      </div>
+      <div class="budget-amount">Możesz jeszcze wydać X złotych</div>
+      <div class="container2">
+        <div id="incomes">
+          <h2>przychody</h2>
+          <div class="form-button" id="fb-income">
+            <div class="form">
+              <input
+                type="text"
+                id="name-of-income"
+                placeholder="Nazwa przychodu"
+              />
+              <input type="text" id="value-of-income" placeholder="Kwota" />
+            </div>
+            <button id="add-income">Dodaj</button>
+          </div>
+          <ul id="incomes-list"></ul>
+          <div class="total">
+            Suma przychodów:
+            <div id="total-income"></div>
+          </div>
+        </div>
+        <div id="expenses">
+          <h2>wydatki</h2>
+          <div class="form-button" id="fb-expense">
+            <div class="form">
+              <input
+                type="text"
+                id="name-of-expense"
+                placeholder="Nazwa wydatku"
+              />
+              <input type="text" id="value-of-expense" placeholder="Kwota" />
+            </div>
+            <button id="add-expen">Dodaj</button>
+          </div>
+          <ul id="expenses-list"></ul>
+          <div class="total">
+            Suma wydatków:
+            <div id="total-expense"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="main.js"></script>
+  </body>
+</html>
