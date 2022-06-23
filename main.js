@@ -232,7 +232,7 @@ const uptadeBalance = () => {
     }
 
     
-    budgetAmount.innerText = `Możesz wydać jeszcze ${calculateBalance()} złotych`
+    budgetAmount.innerText = `Bilans wynosi ${calculateBalance()} złotych`
     
 }
 
