@@ -123,6 +123,7 @@ let addExpe = () => {
 };
 
 let acceptIncomeData = () => {
+    incomes = incomes || [];
     incomes.push({
         name: nameOfIncome.value,
         value: valueOfIncome.value,
