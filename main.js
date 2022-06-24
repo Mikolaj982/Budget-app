@@ -211,6 +211,9 @@ let summaryExpense = () => {
 }
 
 const uptadeBalance = () => {
+    budgetAmount.innerText = `Bilans wynosi ${calculateBalance()} złotych`
+}
+
     const calculateBalance = () => {
         let totalIncome = 0
         let totalExpense = 0
@@ -230,13 +233,7 @@ const uptadeBalance = () => {
         }
         return (totalIncome - totalExpense)
     }
-
     
-    budgetAmount.innerText = `Bilans wynosi ${calculateBalance()} złotych`
-    
-}
-
-
 uptadeBalance()
 summmaryIncome()
 summaryExpense()
