@@ -134,6 +134,7 @@ let acceptIncomeData = () => {
 };
 
 let acceptExpensesData = () => {
+    expenses = expenses || [];
     expenses.push({
       name: nameOfExpense.value,
       value: valueOfExpense.value,
