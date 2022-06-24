@@ -210,15 +210,15 @@ let summaryExpense = () => {
     localStorage.setItem("sumExpense", JSON.stringify(sumExpense));
 }
 
-const uptadeBalance = () => {
+let uptadeBalance = () => {
     budgetAmount.innerText = `Bilans wynosi ${calculateBalance()} złotych`
 }
 
-    const calculateBalance = () => {
+let calculateBalance = () => {
         let totalIncome = 0
         let totalExpense = 0
-        let expenses = JSON.parse(localStorage.getItem('expenses'))
-        let incomes = JSON.parse(localStorage.getItem('incomes'))
+        let expenses = JSON.parse(localStorage.getItem('expenses')) || [];
+        let incomes = JSON.parse(localStorage.getItem('incomes')) || [];
         
         if(incomes.length > 0) {
             incomes.forEach(income => {
@@ -232,8 +232,8 @@ const uptadeBalance = () => {
             })
         }
         return (totalIncome - totalExpense)
-    }
-    
+}
+
 uptadeBalance()
 summmaryIncome()
 summaryExpense()
