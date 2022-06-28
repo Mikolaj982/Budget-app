@@ -1,19 +1,19 @@
-let nameOfIncome = document.querySelector('#name-of-income');
-let valueOfIncome = document.querySelector('#value-of-income');
-let nameOfExpense = document.querySelector('#name-of-expense');
-let valueOfExpense = document.querySelector('#value-of-expense');
-let btnIncome = document.querySelector('#add-income');
-let btnExpen = document.querySelector('#add-expen');
-let incomesList = document.querySelector('#incomes-list');
-let expenList = document.querySelector('#expenses-list');
-let div = document.createElement('div');
-let totalIncome = document.querySelector('#total-income');
-let totalExpense = document.querySelector('#total-expense');
-let budgetAmount = document.querySelector('.budget-amount');
-let formAndButtonIncome = document.querySelector('#fb-income');
-let formAndButtonExpense = document.querySelector('#fb-expense');
-let totalIncomeValue = 0
-let totalExpenseValue = 0
+const nameOfIncome = document.querySelector('#name-of-income');
+const valueOfIncome = document.querySelector('#value-of-income');
+const nameOfExpense = document.querySelector('#name-of-expense');
+const valueOfExpense = document.querySelector('#value-of-expense');
+const btnIncome = document.querySelector('#add-income');
+const btnExpen = document.querySelector('#add-expen');
+const incomesList = document.querySelector('#incomes-list');
+const expenList = document.querySelector('#expenses-list');
+const div = document.createElement('div');
+const totalIncome = document.querySelector('#total-income');
+const totalExpense = document.querySelector('#total-expense');
+const budgetAmount = document.querySelector('.budget-amount');
+const formAndButtonIncome = document.querySelector('#fb-income');
+const formAndButtonExpense = document.querySelector('#fb-expense');
+const totalIncomeValue = 0
+const totalExpenseValue = 0
 
 let incomes = JSON.parse(localStorage.getItem("incomes"))
 if(incomes == 'undefined') incomes = []
@@ -27,21 +27,21 @@ let sumExpense = [];
 
 btnIncome.addEventListener('click', (e) => {
     e.preventDefault();
-    inputValidation();
-    resetForm();
+    inputIncomeValidation();
+    resetIncomesForm();
     summmaryIncome();
     uptadeBalance();
 });
 
 btnExpen.addEventListener('click', (e) => {
     e.preventDefault();
-    inputValidation1();
-    resetForm1();
+    inputExpenseValidation();
+    resetExpensesForm();
     summaryExpense();
     uptadeBalance();
 });
 
-let inputValidation = () => {
+const inputIncomeValidation = () => {
     if(nameOfIncome.value === '' || valueOfIncome.value === '') {
         formAndButtonIncome.insertAdjacentElement('afterend', div);
         div.classList.add('validation');
@@ -54,7 +54,7 @@ let inputValidation = () => {
     }
 }
 
-let inputValidation1 = () => {
+const inputExpenseValidation = () => {
     if(nameOfExpense.value === '' || valueOfExpense.value === '') {
         formAndButtonExpense.insertAdjacentElement('afterend', div);
         div.classList.add('validation');
@@ -66,7 +66,7 @@ let inputValidation1 = () => {
     }
 }
 
-let deleteIncome = (e) => {
+const deleteIncome = (e) => {
     e.parentElement.remove();
     incomes.splice(e.parentElement.id, 1);
     localStorage.setItem("incomes", JSON.stringify(incomes));
@@ -75,7 +75,7 @@ let deleteIncome = (e) => {
     
 }
 
-let deleteExpense = (e) => {
+const deleteExpense = (e) => {
     e.parentElement.remove();
     expenses.splice(e.parentElement.id, 1);
     localStorage.setItem("expenses", JSON.stringify(expenses));
@@ -84,19 +84,18 @@ let deleteExpense = (e) => {
     
 }
 
-let editIncome = (e) => {
+const editIncome = (e) => {
     
-    let select = e.parentElement;
-
+    const select = e.parentElement;
     nameOfIncome.value = select.children[1].innerHTML;
     valueOfIncome.value = select.children[2].innerHTML;
-
+    
     deleteIncome(e);
     
 }  
 
-let editExpense = (e) => {
-    let selected = e.parentElement;
+const editExpense = (e) => {
+    const selected = e.parentElement;
 
     nameOfExpense.value = selected.children[1].innerHTML;
     valueOfExpense.value = selected.children[2].innerHTML;
@@ -105,24 +104,24 @@ let editExpense = (e) => {
     
 }
 
-let addEarn = () => {
+const addEarn = () => {
     incomesList.innerHTML = "";
-    incomes.map((x, y) => {
-        return (incomesList.innerHTML += `<div id=${y}><i class="fa-solid fa-arrow-trend-up"></i><span>${x.name}</span> - <span id='price'>${Number(x.value)}</span>zł <i onClick="editIncome(this)" class="fa-solid fa-pen-to-square"></i> <i onClick="deleteIncome(this);addEarn()" class="fa-solid fa-trash-can"></i></div>`);  
+    incomes.map((income, index) => {
+        return (incomesList.innerHTML += `<div id=${index}><i class="fa-solid fa-arrow-trend-up"></i><span>${income.name}</span> - <span id='price'>${Number(income.value)}</span>zł <i onClick="editIncome(this)" class="fa-solid fa-pen-to-square"></i> <i onClick="deleteIncome(this);addEarn()" class="fa-solid fa-trash-can"></i></div>`);  
     })
     
 };
 
 
-let addExpe = () => {
+const addExpe = () => {
     expenList.innerHTML = "";
-    expenses.map((x, y) => {
-        return (expenList.innerHTML += `<div id=${y}><i class="fa-solid fa-arrow-trend-down"></i><span>${x.name}</span> - <span id='price1'>${x.value}</span>zł <i onClick="editExpense(this)" class="fa-solid fa-pen-to-square"></i> <i onClick="deleteExpense(this);addExpe()" class="fa-solid fa-trash-can"></i></div>`);  
+    expenses.map((expense, index) => {
+        return (expenList.innerHTML += `<div id=${index}><i class="fa-solid fa-arrow-trend-down"></i><span>${expense.name}</span> - <span id='price1'>${expense.value}</span>zł <i onClick="editExpense(this)" class="fa-solid fa-pen-to-square"></i> <i onClick="deleteExpense(this);addExpe()" class="fa-solid fa-trash-can"></i></div>`);  
     })
     
 };
 
-let acceptIncomeData = () => {
+const acceptIncomeData = () => {
     incomes = incomes || [];
     incomes.push({
         name: nameOfIncome.value,
@@ -133,7 +132,7 @@ let acceptIncomeData = () => {
     addEarn();
 };
 
-let acceptExpensesData = () => {
+const acceptExpensesData = () => {
     expenses = expenses || [];
     expenses.push({
       name: nameOfExpense.value,
@@ -145,41 +144,41 @@ let acceptExpensesData = () => {
     addExpe();
 };
 
-let resetForm = () => {
+const resetIncomesForm = () => {
     nameOfIncome.value = '';
     valueOfIncome.value = '';
 }
 
-let resetForm1 = () => {
+const resetExpensesForm = () => {
     nameOfExpense.value = '';
     valueOfExpense.value = '';
 }
 
 (() => {
     data = JSON.parse(localStorage.getItem("incomes")) || [];
-    data.map((x, y) => {
-        return (incomesList.innerHTML += `<div id=${y}><i class="fa-solid fa-arrow-trend-up"></i><span>${x.name}</span> - <span id='price'>${x.value}</span>zł <i onClick="editIncome(this)" class="fa-solid fa-pen-to-square"></i> <i onClick="deleteIncome(this)" class="fa-solid fa-trash-can"></i></div>`);  
+    data.map((income, index) => {
+        return (incomesList.innerHTML += `<div id=${index}><i class="fa-solid fa-arrow-trend-up"></i><span>${income.name}</span> - <span id='price'>${income.value}</span>zł <i onClick="editIncome(this)" class="fa-solid fa-pen-to-square"></i> <i onClick="deleteIncome(this)" class="fa-solid fa-trash-can"></i></div>`);  
     }) 
   })();
 
 
 (() => {
     data = JSON.parse(localStorage.getItem("expenses")) || [];
-    data.map((x, y) => {
-        return (expenList.innerHTML += `<div id=${y}><i class="fa-solid fa-arrow-trend-up"></i><span>${x.name}</span> - <span id='price1'>${x.value}</span>zł <i onClick="editExpense(this)" class="fa-solid fa-pen-to-square"></i> <i onClick="deleteExpense(this)" class="fa-solid fa-trash-can"></i></div>`);  
+    data.map((expense, index) => {
+        return (expenList.innerHTML += `<div id=${index}><i class="fa-solid fa-arrow-trend-up"></i><span>${expense.name}</span> - <span id='price1'>${expense.value}</span>zł <i onClick="editExpense(this)" class="fa-solid fa-pen-to-square"></i> <i onClick="deleteExpense(this)" class="fa-solid fa-trash-can"></i></div>`);  
     }) 
   })();
 
   
 
-let summmaryIncome = () => {
+const summmaryIncome = () => {
     
     totalIncome.innerHTML = ''
     const spanList = document.querySelectorAll('#price')
-    let elList = [...spanList];
-    let innerValues = elList.map(el => parseInt(el.innerText))
+    const elList = [...spanList];
+    const innerValues = elList.map(el => parseInt(el.innerText))
     const summ = () => { 
-        let sum = innerValues.reduce((x, y) =>  x + y);
+        const sum = innerValues.reduce((prev, curr) =>  prev + curr);
         return( totalIncome.innerHTML += `${sum}zł`)
     }
     if(innerValues.length > 0) {
@@ -192,14 +191,14 @@ let summmaryIncome = () => {
     localStorage.setItem("sumIncome", JSON.stringify(sumIncome));
 }
 
-let summaryExpense = () => {
+const summaryExpense = () => {
     
     totalExpense.innerHTML = ''
     const spanList = document.querySelectorAll('#price1')
-    let elList = [...spanList];
-    let innerValues = elList.map(el => parseInt(el.innerText))
+    const elList = [...spanList];
+    const innerValues = elList.map(el => parseInt(el.innerText))
     const summ = () => { 
-        let sum = innerValues.reduce((x, y) =>  x + y);
+        const sum = innerValues.reduce((prev, curr) =>  prev + curr);
         return (totalExpense.innerHTML += `${sum}zł`)
     }
     if(innerValues.length > 0) {
@@ -212,15 +211,12 @@ let summaryExpense = () => {
     localStorage.setItem("sumExpense", JSON.stringify(sumExpense));
 }
 
-let uptadeBalance = () => {
-    budgetAmount.innerText = `Bilans wynosi ${calculateBalance()} złotych`
-}
 
-let calculateBalance = () => {
+const calculateBalance = () => {
         let totalIncome = 0
         let totalExpense = 0
-        let expenses = JSON.parse(localStorage.getItem('expenses')) || [];
-        let incomes = JSON.parse(localStorage.getItem('incomes')) || [];
+        const expenses = JSON.parse(localStorage.getItem('expenses')) || [];
+        const incomes = JSON.parse(localStorage.getItem('incomes')) || [];
         
         if(incomes.length > 0) {
             incomes.forEach(income => {
@@ -234,7 +230,19 @@ let calculateBalance = () => {
             })
         }
         return (totalIncome - totalExpense)
-}
+    }
+    
+    const uptadeBalance = () => {
+
+        if (calculateBalance() === 0) {
+            budgetAmount.innerText = `Bilans jest równy 0`;
+        } else if (calculateBalance() > 0) {
+            budgetAmount.innerText = `Możesz jeszcze wydać ${calculateBalance()}`;
+        } else {
+            budgetAmount.innerText = `Bilans jest ujemny i wynosi ${calculateBalance()}`;
+        }
+
+    }
 
 uptadeBalance()
 summmaryIncome()
